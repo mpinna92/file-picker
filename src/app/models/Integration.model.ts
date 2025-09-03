@@ -1,5 +1,6 @@
 export interface Integration {
-  icon?: string;
+  id: string;
+  icon: string;
   name: string;
   qty: number;
 }

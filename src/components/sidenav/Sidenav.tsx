@@ -1,41 +1,15 @@
-import Image from "next/image";
-import { SidenavButton } from "./SidenavButton";
-import { Integration } from "@/app/models/Integration.model";
+"use client";
 
-const integrations: Integration[] = [
-  {
-    name: "Files",
-    icon: "/assets/icon_files.svg",
-    qty: 0,
-  },
-  {
-    name: "Slack",
-    icon: "/assets/icon_slack.svg",
-    qty: 0,
-  },
-  {
-    name: "Google Drive",
-    icon: "/assets/icon_drive.svg",
-    qty: 0,
-  },
-  {
-    name: "Dropbox",
-    icon: "/assets/icon_dropbox.svg",
-    qty: 0,
-  },
-  {
-    name: "Notion",
-    icon: "/assets/icon_notion.svg",
-    qty: 0,
-  },
-  {
-    name: "Office 365",
-    icon: "/assets/icon_office.svg",
-    qty: 0,
-  },
-];
+import Image from "next/image";
+import { Integration } from "@/app/models/Integration.model";
+import { integrations } from "./IntegrationsList";
+import { useState } from "react";
+import { SidenavButton } from "./SidenavButton";
 
 export function Sidenav() {
+  const [activeId, setActiveId] = useState<string>("googleDrive");
+  console.log(activeId);
+
   return (
     <nav className="flex h-screen w-60 flex-col border-r border-gray-200 bg-gray-100">
       <div className="start flex h-15 w-full flex-none content-center items-center justify-between gap-1 border-b border-gray-200 px-5">
@@ -50,16 +24,18 @@ export function Sidenav() {
       </div>
 
       <div className="w-full overflow-y-auto">
-        <ul className="gap- flex flex-col p-2 pt-4">
+        <div className="gap- flex flex-col p-2 pt-4">
           {integrations.map((integration: Integration) => (
             <SidenavButton
-              key={integration.name}
+              key={integration.id}
               icon={integration.icon}
               name={integration.name}
               qty={integration.qty}
+              onClick={() => setActiveId(integration.id)}
+              isActive={activeId === integration.id}
             />
           ))}
-        </ul>
+        </div>
       </div>
     </nav>
   );
