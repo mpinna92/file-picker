@@ -10,10 +10,7 @@ interface TypeItemProps {
 export function TypeItem({ type = "file", name = "Acme" }: TypeItemProps) {
   if (type === "folder")
     return (
-      <button
-        onClick={() => console.log("red")}
-        className="flex h-full w-fit items-center gap-3 truncate pr-4 text-left text-sm font-bold text-nowrap hover:cursor-pointer hover:underline hover:decoration-4"
-      >
+      <button className="flex h-full w-fit items-center gap-3 truncate pr-4 text-left text-sm font-bold text-nowrap hover:cursor-pointer hover:underline hover:decoration-4">
         <Folder size={16} className="flex-none text-gray-500" />
         <div className="truncate">{name}</div>
       </button>

@@ -17,7 +17,7 @@ export const integrations: Integration[] = [
     id: "googleDrive",
     name: "Google Drive",
     icon: "/assets/icon_drive.svg",
-    qty: 0,
+    qty: 16,
   },
   {
     id: "dropbox",
