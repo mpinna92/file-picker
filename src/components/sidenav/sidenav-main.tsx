@@ -3,7 +3,7 @@ import { integrations } from "./integrations-list";
 import { SidenavButton } from "./sidenav-button";
 import { SidenavBrand } from "./sidenav-brand";
 import useIntegrationStore from "@/stores/integration.store";
-import { Integration } from "@/models/integration.model";
+import { Integration } from "@/types/integration.type";
 import { KBase } from "../knowledgebase/kbase-main";
 
 export function Sidenav() {

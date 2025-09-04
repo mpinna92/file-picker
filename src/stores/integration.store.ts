@@ -1,4 +1,4 @@
-import { Integration } from "@/models/integration.model";
+import { Integration } from "@/types/integration.type";
 import { create } from "zustand";
 
 interface IntegrationStore {
