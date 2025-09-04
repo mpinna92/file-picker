@@ -5,7 +5,7 @@ import { integrations } from "./IntegrationsList";
 import { useState } from "react";
 import { SidenavButton } from "./SidenavButton";
 import { SidenavBrand } from "./SidenavBrand";
-import { KBase } from "./KBase";
+import { KBase } from "../knowledgebase/KBase";
 
 export function Sidenav() {
   const [activeId, setActiveId] = useState<string>("googleDrive");
