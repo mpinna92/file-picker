@@ -11,7 +11,7 @@ export function TableRow() {
       </div>
 
       <div className="flex h-full w-full min-w-0 flex-1 items-center justify-start px-3">
-        <TypeItem name="Acme" type="folder" />
+        <TypeItem name="Acme  " type="folder" />
       </div>
 
       <div className="flex h-full w-60 flex-none items-center px-3">

@@ -1,8 +1,8 @@
 import { Header } from "../components/header/Header";
 import { Sidenav } from "../components/sidenav/Sidenav";
-import { TableFiles } from "@/components/table-files/TableFiles";
 import { TableFilters } from "@/components/table-filters/TableFilters";
 import { Footer } from "@/components/footer/Footer";
+import { EmptyState } from "@/components/empty-state/EmptyState";
 
 export default function Home() {
   return (
@@ -16,7 +16,8 @@ export default function Home() {
 
         <div className="flex h-full w-full overflow-hidden">
           <div className="h-full w-full overflow-auto">
-            <TableFiles />
+            <EmptyState />
+            {/* <TableFiles /> */}
           </div>
         </div>
 
