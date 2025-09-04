@@ -5,7 +5,7 @@ export function SelectAll() {
   return (
     <div className="flex items-center gap-3.5">
       <div className="flex items-center gap-2.5">
-        <Checkbox id="selectAllCheck" className="border-red h-4 w-4" />
+        <Checkbox id="selectAllCheck" className="h-4 w-4" />
         <label
           htmlFor="selectAllCheck"
           className="text-sm text-gray-700 select-none"

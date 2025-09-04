@@ -4,7 +4,7 @@ import { Plus } from "lucide-react";
 
 export function Header() {
   return (
-    <div className="flex h-15 w-full flex-none items-center justify-between gap-2 border-b border-gray-200 bg-white px-10">
+    <div className="flex h-15 w-full flex-none items-center justify-between gap-2 border-b border-gray-200 bg-white px-5">
       <div className="item flex items-center gap-2">
         <Image
           className="h-auto w-full max-w-10 object-contain"

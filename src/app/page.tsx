@@ -1,222 +1,25 @@
 import { Header } from "../components/header/Header";
 import { Sidenav } from "../components/sidenav/Sidenav";
-import { Footer } from "@/components/footer/Footer";
+import { TableFiles } from "@/components/table-files/TableFiles";
 import { TableFilters } from "@/components/table-filters/TableFilters";
+import { Footer } from "@/components/footer/Footer";
 
 export default function Home() {
   return (
-    <div className="flex h-screen w-full bg-white">
+    <div className="flex h-dvh w-full grid-cols-2 overflow-hidden bg-white">
       <Sidenav />
-      <div className="flex h-screen w-full flex-col overflow-hidden bg-white">
+
+      <div className="flex h-dvh w-full flex-col overflow-hidden">
         <Header />
 
         <TableFilters />
 
-        <div className="h-full w-full overflow-y-auto p-10 py-5">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-          nulla maxime voluptate natus facere voluptatum? Asperiores enim,
-          eveniet sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Consequatur nulla
-          maxime voluptate natus facere voluptatum? Asperiores enim, eveniet
-          sapiente expedita nobis eaque. Eaque perspiciatis qui corporis
-          dolorum, magnam dolorem error. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Consequatur nulla maxime voluptate natus facere
-          voluptatum? Asperiores enim, eveniet sapiente expedita nobis eaque.
-          Eaque perspiciatis qui corporis dolorum, magnam dolorem error.
+        <div className="flex h-full w-full overflow-hidden">
+          <div className="h-full w-full overflow-auto">
+            <TableFiles />
+          </div>
         </div>
+
         <Footer />
       </div>
     </div>

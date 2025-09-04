@@ -12,7 +12,7 @@ export function Sidenav() {
   console.log(activeId);
 
   return (
-    <nav className="flex h-screen w-60 flex-col border-r border-gray-200 bg-gray-100">
+    <nav className="flex h-dvh w-60 flex-col border-r border-gray-200 bg-gray-100">
       <SidenavBrand />
 
       <div className="w-full overflow-y-auto">

@@ -5,7 +5,7 @@ import { SortButton } from "./SortButton";
 
 export function TableFilters() {
   return (
-    <div className="flex w-full items-center justify-between gap-2 border-b border-gray-200 px-10 py-3">
+    <div className="flex w-full items-center justify-between gap-2 border-b border-gray-200 px-5 py-3">
       <div className="flex items-center gap-6">
         <SelectAll />
       </div>
