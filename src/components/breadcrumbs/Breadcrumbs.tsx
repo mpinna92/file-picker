@@ -1,7 +1,7 @@
 import { House } from "lucide-react";
 import { Button } from "../ui/button";
-import { BreadSeparator } from "./BreadSeparator";
-import { BreadButton } from "./BreadButton";
+import { BreadSeparator } from "./bread-separator";
+import { BreadButton } from "./bread-button";
 
 export function Breadcrumbs() {
   return (

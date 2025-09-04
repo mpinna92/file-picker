@@ -1,12 +1,12 @@
 "use client";
 
-import { Header } from "../components/header/Header";
-import { Sidenav } from "../components/sidenav/Sidenav";
-import { TableFilters } from "@/components/table-filters/TableFilters";
-import { Footer } from "@/components/footer/Footer";
-import { EmptyState } from "@/components/empty-state/EmptyState";
+import { TableFilters } from "@/components/table-filters/table-filters";
+import { EmptyState } from "@/components/empty-state/empty-state";
 import useIntegrationStore from "@/stores/integration.store";
-import { TableFiles } from "@/components/table-files/TableFiles";
+import { TableFiles } from "@/components/table-files/table-files";
+import { Sidenav } from "@/components/sidenav/sidenav";
+import { Header } from "@/components/header/header";
+import { Footer } from "@/components/footer/footer";
 
 export default function Home() {
   const totalFiles = useIntegrationStore(

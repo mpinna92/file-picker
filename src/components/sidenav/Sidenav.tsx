@@ -1,11 +1,10 @@
 "use client";
-
-import { Integration } from "@/models/Integration.model";
-import { integrations } from "./IntegrationsList";
-import { SidenavButton } from "./SidenavButton";
-import { SidenavBrand } from "./SidenavBrand";
-import { KBase } from "../knowledgebase/KBase";
+import { integrations } from "./integrations-list";
+import { SidenavButton } from "./sidenav-button";
+import { SidenavBrand } from "./sidenav-brand";
 import useIntegrationStore from "@/stores/integration.store";
+import { Integration } from "@/models/integration.model";
+import { KBase } from "../knowledgebase/kbase";
 
 export function Sidenav() {
   const integration = useIntegrationStore((state) => state.integration);

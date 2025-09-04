@@ -1,7 +1,7 @@
 "use client";
 
 import useIntegrationStore from "@/stores/integration.store";
-import { AddToKBase } from "./AddToKBase";
+import { AddToKBase } from "./add-to-kbase";
 import { Info } from "lucide-react";
 
 export function Footer() {

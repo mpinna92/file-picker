@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { KBaseEmptyState } from "./KBaseEmptyState";
+import { KBaseEmptyState } from "./kbase-empty-state";
 
 export function KBase() {
   return (

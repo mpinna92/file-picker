@@ -1,5 +1,5 @@
-import { TableHeader } from "./TableHeader";
-import { TableRow } from "./TableRow";
+import { TableHeader } from "./table-header";
+import { TableRow } from "./table-row";
 
 export function TableFiles() {
   return (

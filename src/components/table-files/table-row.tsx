@@ -1,7 +1,7 @@
 "use client";
 import { Checkbox } from "../ui/checkbox";
-import { IndexBadgeStatus } from "./IndexBadgeStatus";
-import { TypeItem } from "./TypeItem";
+import { IndexBadgeStatus } from "./index-badge-status";
+import { TypeItem } from "./type-item";
 
 export function TableRow() {
   return (

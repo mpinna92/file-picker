@@ -1,10 +1,10 @@
 "use client";
 
 import useIntegrationStore from "@/stores/integration.store";
-import { FilterButton } from "./FilterButton";
-import { SearchFilter } from "./SearchFilter";
-import { SelectAll } from "./SelectAll";
-import { SortButton } from "./SortButton";
+import { FilterButton } from "./filter-button";
+import { SearchFilter } from "./search-filter";
+import { SelectAll } from "./select-all";
+import { SortButton } from "./sort-button";
 
 export function TableFilters() {
   const totalFiles = useIntegrationStore(
