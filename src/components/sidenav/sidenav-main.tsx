@@ -5,6 +5,7 @@ import { SidenavBrand } from "./sidenav-brand";
 import useIntegrationStore from "@/stores/integration.store";
 import { Integration } from "@/types/integration.type";
 import { KBase } from "../knowledgebase/kbase-main";
+import { useResourceStore } from "@/stores/resource.store";
 
 export function Sidenav() {
   const integration = useIntegrationStore((state) => state.integration);
@@ -13,6 +14,7 @@ export function Sidenav() {
   const updateActiveIntegration = useIntegrationStore(
     (state) => state.updateActiveIntegration,
   );
+  const totalFiles = useResourceStore((state) => state.totalFiles);
 
   return (
     <nav className="flex h-dvh w-25 flex-col border-r border-gray-200 bg-gray-100 lg:w-60">
@@ -25,7 +27,11 @@ export function Sidenav() {
               key={integration.id}
               icon={integration.icon}
               name={integration.name}
-              qty={integration.totalFiles}
+              qty={
+                integration.id === "googleDrive"
+                  ? totalFiles
+                  : integration.totalFiles
+              }
               onClick={() => updateActiveIntegration(integration)}
               isActive={id === integration.id}
             />

@@ -15,6 +15,7 @@ export function SidenavButton({
   onClick,
   isActive,
 }: SidenavButtonProps) {
+  const hasFiles = qty > 0;
   return (
     <button
       onClick={onClick}
@@ -32,7 +33,9 @@ export function SidenavButton({
         <span className="hidden truncate text-nowrap lg:block">{name}</span>
       </div>
 
-      <div className="text-right text-xs text-gray-500">{`${qty}`}</div>
+      {hasFiles && (
+        <div className="h-2 w-2 flex-none rounded-full bg-blue-500"></div>
+      )}
     </button>
   );
 }
