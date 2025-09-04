@@ -19,7 +19,7 @@ export function Sidenav() {
       <SidenavBrand />
 
       <div className="w-full overflow-y-auto">
-        <div className="gap- flex flex-col p-2 pt-4">
+        <div className="flex flex-col gap-2 p-2 pt-4">
           {integrations.map((integration: Integration) => (
             <SidenavButton
               key={integration.id}
