@@ -1,15 +1,19 @@
 "use client";
 
-import { Integration } from "@/app/models/Integration.model";
+import { Integration } from "@/models/Integration.model";
 import { integrations } from "./IntegrationsList";
-import { useState } from "react";
 import { SidenavButton } from "./SidenavButton";
 import { SidenavBrand } from "./SidenavBrand";
 import { KBase } from "../knowledgebase/KBase";
+import useIntegrationStore from "@/stores/integration.store";
 
 export function Sidenav() {
-  const [activeId, setActiveId] = useState<string>("googleDrive");
-  console.log(activeId);
+  const integration = useIntegrationStore((state) => state.integration);
+  const { id } = integration;
+
+  const updateActiveIntegration = useIntegrationStore(
+    (state) => state.updateActiveIntegration,
+  );
 
   return (
     <nav className="flex h-dvh w-25 flex-col border-r border-gray-200 bg-gray-100 lg:w-60">
@@ -22,9 +26,9 @@ export function Sidenav() {
               key={integration.id}
               icon={integration.icon}
               name={integration.name}
-              qty={integration.qty}
-              onClick={() => setActiveId(integration.id)}
-              isActive={activeId === integration.id}
+              qty={integration.totalFiles}
+              onClick={() => updateActiveIntegration(integration)}
+              isActive={id === integration.id}
             />
           ))}
         </div>
