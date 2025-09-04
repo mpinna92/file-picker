@@ -13,8 +13,6 @@ export default function Home() {
     (state) => state.integration.totalFiles,
   );
 
-  console.log(!!totalFiles);
-
   return (
     <div className="flex h-dvh w-full grid-cols-2 overflow-hidden bg-white">
       <Sidenav />
