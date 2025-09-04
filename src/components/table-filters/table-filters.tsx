@@ -13,7 +13,7 @@ export function TableFilters() {
 
   return (
     <div
-      className={`flex w-full items-center justify-between gap-2 border-b border-gray-200 px-5 py-3 ${!totalFiles ? "pointer-events-none opacity-40" : "pointer-events-auto opacity-100"}`}
+      className={`flex w-full items-center justify-between gap-2 border-b border-gray-200 px-5 py-3 transition-all ${!totalFiles ? "pointer-events-none opacity-40" : "pointer-events-auto opacity-100"}`}
     >
       <div className="flex items-center gap-6">
         <SelectAll />

@@ -1,0 +1,8 @@
+export const API_URLS = {
+  SUPABASE_AUTH_URL: `${process.env.SUPABASE_AUTH_URL}`,
+  STACK_AI_BACKEND: `${process.env.NEXT_PUBLIC_STACK_AI_BACKEND}`,
+};
+
+export const API_URLS_INTERNAL = {
+  AUTH_SESSION_INTERNAL: `${process.env.NEXT_PUBLIC_AUTH_SESSION_INTERNAL}`,
+};

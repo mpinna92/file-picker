@@ -7,11 +7,17 @@ import { TableFiles } from "@/components/table-files/table-files";
 import { Sidenav } from "@/components/sidenav/sidenav";
 import { Header } from "@/components/header/header";
 import { Footer } from "@/components/footer/footer";
+import { useSession } from "@/hooks/useSession";
 
 export default function Home() {
   const totalFiles = useIntegrationStore(
     (state) => state.integration.totalFiles,
   );
+
+  const { loading, error } = useSession();
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div className="flex h-dvh w-full grid-cols-2 overflow-hidden bg-white">
