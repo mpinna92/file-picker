@@ -4,7 +4,7 @@ import { SidenavButton } from "./sidenav-button";
 import { SidenavBrand } from "./sidenav-brand";
 import useIntegrationStore from "@/stores/integration.store";
 import { Integration } from "@/models/integration.model";
-import { KBase } from "../knowledgebase/kbase";
+import { KBase } from "../knowledgebase/kbase-main";
 
 export function Sidenav() {
   const integration = useIntegrationStore((state) => state.integration);
