@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import useSWR from "swr";
 import { fetcher } from "@/fetchers/fetcher";
 import { API_URLS_INTERNAL } from "@/statics";
-import { Resource } from "@/types/resources.type";
-import { useResourceStore } from "@/stores/resource.store";
+import type { Resource } from "@/types/resources.type";
+import { useFetchedResourcesStore } from "@/stores/fetchedResources.store";
 
 type ResourcesResponse = {
   success: boolean;
@@ -15,8 +15,7 @@ type ResourcesResponse = {
 
 export function useResources(connectionId?: string, folderId?: string) {
   const { RESOURCES_INTERNAL } = API_URLS_INTERNAL;
-
-  const setTotalFiles = useResourceStore((state) => state.setTotalFiles);
+  const setResources = useFetchedResourcesStore((s) => s.setResources);
 
   const shouldFetch = !!connectionId;
 
@@ -31,17 +30,16 @@ export function useResources(connectionId?: string, folderId?: string) {
     fetcher,
   );
 
-  // Sync with Zustand
   useEffect(() => {
     if (data?.resources) {
-      setTotalFiles(data.resources.length);
+      setResources(data.resources);
     }
-  }, [data?.resources, setTotalFiles]);
+  }, [data, setResources]);
 
   return {
-    resources: data?.resources ?? [],
-    loading: isLoading,
-    error,
-    refresh: mutate,
+    resources: data?.resources || [],
+    isLoading,
+    isError: error,
+    mutate,
   };
 }

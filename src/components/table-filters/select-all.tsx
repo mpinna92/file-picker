@@ -1,28 +1,31 @@
 "use client";
 
 import { Checkbox } from "@/components/ui/checkbox";
-import { useKBStore } from "@/stores/kb.store";
+import { useFetchedResourcesStore } from "@/stores/fetchedResources.store";
+import { useSelectedResourcesStore } from "@/stores/selectedResources.store";
 
 export function SelectAll() {
-  const selectedIds = useKBStore((s) => s.selectedResourceIds);
-  const visibleIds = useKBStore((s) => s.visibleResourceIds);
-  const addMany = useKBStore((s) => s.addMany);
-  const removeMany = useKBStore((s) => s.removeMany);
+  const selectedIds = useSelectedResourcesStore((s) => s.selectedIds);
+  const toggle = useSelectedResourcesStore((s) => s.toggle);
+  const clear = useSelectedResourcesStore((s) => s.clear);
+
+  const resources = useFetchedResourcesStore((s) => s.resources);
+  const visibleIds = resources.map((r) => r.resource_id);
 
   const count = selectedIds.length;
 
-  // All visible rows are selected?
   const allVisibleSelected =
     visibleIds.length > 0 && visibleIds.every((id) => selectedIds.includes(id));
 
   const handleToggleAll = () => {
-    if (visibleIds.length === 0) return; // nothing to do
+    if (visibleIds.length === 0) return;
+
     if (allVisibleSelected) {
-      // Deselect only visible items
-      removeMany(visibleIds);
+      clear();
     } else {
-      // Select all visible items
-      addMany(visibleIds);
+      visibleIds.forEach((id) => {
+        if (!selectedIds.includes(id)) toggle(id);
+      });
     }
   };
 
