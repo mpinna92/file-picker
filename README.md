@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 🏁 Start
 
-## Getting Started
+1 - Install all dependencies
 
-First, run the development server:
+```bash
+npm i
+```
+
+2 - Config .envs:
+
+3 - Launch project:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 💁 Demo
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+See online 🔗[here](https://file-picker-mpinna.vercel.app/)
 
-## Learn More
+## 🧰 Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+🧙‍♂️ Next.js (App Router) + React
+🟦 TypeScript
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🔁 SWR (data fetching & mutations)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🧠 Zustand (global states)
 
-## Deploy on Vercel
+🧩 shadcn/ui + Tailwind CSS (UI)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+🖼 lucide-react (icons)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🌐 Vercel (deploy)
+
+## ✨ Features
+
+🗂 Browse: folder navigation with breadcrumbs.
+
+✅ Selection: individual selection and Select all that skips indexed items.
+
+🔎 Search: instant filter by path (case-insensitive).
+
+🔄 Sort: sort by path (A–Z / Z–A).
+
+🧠 KB Sync: after adding to the KB, resources switch to status: "indexed" and the UI updates immediately.
+
+♻️ Local persistence: the indexed state is preserved across folder changes and SWR revalidations.
+
+🙏 ¡Thanks for your time!
