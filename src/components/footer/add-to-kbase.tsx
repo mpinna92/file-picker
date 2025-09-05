@@ -3,19 +3,51 @@
 import { Button } from "@/components/ui/button";
 import { ListPlus } from "lucide-react";
 import { useKBStore } from "@/stores/kb.store";
+import { useConnection } from "@/hooks/useConnection";
 
 export function AddToKBase() {
   const selected = useKBStore((state) => state.selectedResourceIds);
   const clearSelection = useKBStore((state) => state.clearSelection);
+  const setStatusForSelected = useKBStore(
+    (state) => state.setStatusForSelected,
+  );
+
+  const { connection } = useConnection();
 
   const count = selected.length;
-  const disabled = count === 0;
+  const disabled = count === 0 || !connection;
 
-  // TODO: hook up API call
-  const handleAdd = () => {
-    if (disabled) return;
-    console.log("Adding to KB:", selected);
-    // Later: call /api/knowledge-bases with selected ids
+  const handleAdd = async () => {
+    if (disabled || !connection) return;
+
+    // 1. Optimistic update → set to "indexing"
+    setStatusForSelected("indexing");
+
+    try {
+      const res = await fetch("/api/knowledge-bases", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          connectionId: connection.connection_id,
+          resourceIds: selected,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to create knowledge base");
+      }
+
+      const data = await res.json();
+      console.log("Knowledge Base created:", data.knowledge_base_id);
+
+      // 2. Clear selection after success
+      clearSelection();
+    } catch (err) {
+      console.error("Error creating KB:", err);
+
+      // 3. Rollback → volver a "notIndexed"
+      setStatusForSelected("notIndexed");
+    }
   };
 
   return (

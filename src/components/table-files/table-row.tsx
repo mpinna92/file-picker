@@ -13,11 +13,14 @@ interface TableRowProps {
 }
 
 export function TableRow({ resource, onFolderClick }: TableRowProps) {
-  // Optimized Zustand selectors
   const checked = useKBStore((state) =>
     state.selectedResourceIds.includes(resource.resource_id),
   );
   const toggleResource = useKBStore((state) => state.toggleResource);
+
+  // Disable checkbox if resource is already in KB
+  const isDisabled =
+    resource.status === "indexed" || resource.status === "indexing";
 
   return (
     <div className="flex h-13 w-full flex-none items-center justify-between border-b border-gray-200 bg-white transition-all last:border-b-0 hover:bg-gray-100">
@@ -26,6 +29,7 @@ export function TableRow({ resource, onFolderClick }: TableRowProps) {
         <Checkbox
           checked={checked}
           onCheckedChange={() => toggleResource(resource.resource_id)}
+          disabled={isDisabled}
         />
       </div>
 

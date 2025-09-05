@@ -1,12 +1,15 @@
 import { API_URLS } from "@/statics";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-import { RawResource, Resource } from "@/types/resources.type";
-import { mapRawResource } from "@/utils/resource-mapper";
+import { RawKBResource, Resource } from "@/types/resources.type";
+import { mapRawKBResource } from "@/utils/resource-mapper";
 
 const { STACK_AI_BACKEND } = API_URLS;
 
-export async function GET(request: Request) {
+export async function GET(
+  request: Request,
+  context: { params: Promise<{ id: string }> }, // 👈 en Next.js 15 params es Promise
+) {
   const token = (await cookies()).get("session_token")?.value;
 
   if (!token) {
@@ -18,18 +21,20 @@ export async function GET(request: Request) {
 
   try {
     const { searchParams } = new URL(request.url);
-    const connectionId = searchParams.get("connection_id");
-    const resourceId = searchParams.get("resource_id");
+    const resourcePath = searchParams.get("resource_path") || "/";
+    const { id } = await context.params; // ✅ hay que await params
+    const kbId = id;
 
-    if (!connectionId) {
+    if (!kbId) {
       return NextResponse.json(
-        { success: false, message: "Missing connection_id" },
+        { success: false, message: "Missing knowledge_base_id" },
         { status: 400 },
       );
     }
 
-    const baseUrl = `${STACK_AI_BACKEND}/connections/${connectionId}/resources/children`;
-    const url = resourceId ? `${baseUrl}?resource_id=${resourceId}` : baseUrl;
+    const url = `${STACK_AI_BACKEND}/knowledge_bases/${kbId}/resources/children?resource_path=${encodeURIComponent(
+      resourcePath,
+    )}`;
 
     const res = await fetch(url, {
       method: "GET",
@@ -38,15 +43,15 @@ export async function GET(request: Request) {
 
     if (!res.ok) {
       return NextResponse.json(
-        { success: false, message: "Failed to fetch resources" },
+        { success: false, message: "Failed to fetch KB resources" },
         { status: res.status },
       );
     }
 
     const data = await res.json();
 
-    const resources: Resource[] = (data.data as RawResource[]).map(
-      mapRawResource,
+    const resources: Resource[] = (data.data as RawKBResource[]).map(
+      mapRawKBResource,
     );
 
     return NextResponse.json({ success: true, resources });

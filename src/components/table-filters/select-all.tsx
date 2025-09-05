@@ -4,21 +4,25 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useKBStore } from "@/stores/kb.store";
 
 export function SelectAll() {
-  const selectedIds = useKBStore((state) => state.selectedResourceIds);
-  const visibleResources = useKBStore((state) => state.visibleResources);
-  const addMany = useKBStore((state) => state.addMany);
-  const clearSelection = useKBStore((state) => state.clearSelection);
+  const selectedIds = useKBStore((s) => s.selectedResourceIds);
+  const visibleIds = useKBStore((s) => s.visibleResourceIds);
+  const addMany = useKBStore((s) => s.addMany);
+  const removeMany = useKBStore((s) => s.removeMany);
 
-  const allIds = visibleResources.map((r) => r.resource_id);
-  const allSelected =
-    allIds.length > 0 && allIds.every((id) => selectedIds.includes(id));
   const count = selectedIds.length;
 
+  // All visible rows are selected?
+  const allVisibleSelected =
+    visibleIds.length > 0 && visibleIds.every((id) => selectedIds.includes(id));
+
   const handleToggleAll = () => {
-    if (allSelected) {
-      clearSelection();
+    if (visibleIds.length === 0) return; // nothing to do
+    if (allVisibleSelected) {
+      // Deselect only visible items
+      removeMany(visibleIds);
     } else {
-      addMany(allIds);
+      // Select all visible items
+      addMany(visibleIds);
     }
   };
 
@@ -28,7 +32,7 @@ export function SelectAll() {
         <Checkbox
           id="selectAllCheck"
           className="h-4 w-4"
-          checked={allSelected}
+          checked={allVisibleSelected}
           onCheckedChange={handleToggleAll}
         />
         <label

@@ -1,21 +1,38 @@
 import { create } from "zustand";
-import { Resource } from "@/types/resources.type";
 
 type KBStore = {
+  // Selected resource IDs (global selection)
   selectedResourceIds: string[];
-  visibleResources: Resource[];
 
+  // IDs of resources currently visible in the table (current folder view)
+  visibleResourceIds: string[];
+
+  // --- actions ---
+  // Toggle a single id in/out of the selection
   toggleResource: (id: string) => void;
+
+  // Add many ids at once (deduped)
   addMany: (ids: string[]) => void;
+
+  // Remove many ids at once (only those present will be removed)
+  removeMany: (ids: string[]) => void;
+
+  // Clear all selected ids
   clearSelection: () => void;
+
+  // Check if a given id is selected
   isSelected: (id: string) => boolean;
-  setVisibleResources: (resources: Resource[]) => void;
-  resetOnNavigation: (resources: Resource[]) => void; // 👈 new
+
+  // Replace the list of visible resource ids (call this whenever the table changes folder)
+  setVisibleResourceIds: (ids: string[]) => void;
+
+  // Reset selection when navigating (breadcrumbs, opening folder, going to root)
+  resetOnNavigation: () => void;
 };
 
 export const useKBStore = create<KBStore>((set, get) => ({
   selectedResourceIds: [],
-  visibleResources: [],
+  visibleResourceIds: [],
 
   toggleResource: (id) =>
     set((state) => {
@@ -33,15 +50,21 @@ export const useKBStore = create<KBStore>((set, get) => ({
       return { selectedResourceIds: Array.from(setIds) };
     }),
 
+  removeMany: (ids) =>
+    set((state) => {
+      const removeSet = new Set(ids);
+      return {
+        selectedResourceIds: state.selectedResourceIds.filter(
+          (rid) => !removeSet.has(rid),
+        ),
+      };
+    }),
+
   clearSelection: () => set({ selectedResourceIds: [] }),
 
   isSelected: (id) => get().selectedResourceIds.includes(id),
 
-  setVisibleResources: (resources) => set({ visibleResources: resources }),
+  setVisibleResourceIds: (ids) => set({ visibleResourceIds: ids }),
 
-  resetOnNavigation: (resources) =>
-    set({
-      visibleResources: resources,
-      selectedResourceIds: [], // clear on navigation
-    }),
+  resetOnNavigation: () => set({ selectedResourceIds: [] }),
 }));

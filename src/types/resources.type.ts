@@ -4,6 +4,9 @@ export type RawResource = {
   inode_type: "directory" | "file";
   updated_at: string;
 };
+export type RawKBResource = RawResource & {
+  status?: "pending" | "indexed";
+};
 
 export type Resource = {
   resource_id: string;
