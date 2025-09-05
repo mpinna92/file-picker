@@ -9,6 +9,8 @@ import { SkTableFiles } from "./skeletons/sk-table-files";
 import { Resource } from "@/types/resources.type";
 import { Breadcrumbs } from "./breadcrumbs";
 import { useKBStore } from "@/stores/kb.store";
+import { EmptyState } from "../empty-state/empty-state";
+import { ServerOff } from "lucide-react";
 
 export function TableFiles() {
   const { connection, loading: connLoading } = useConnection();
@@ -26,7 +28,13 @@ export function TableFiles() {
   const resetOnNavigation = useKBStore((s) => s.resetOnNavigation);
 
   if (connLoading || loading) return <SkTableFiles />;
-  if (error) return <p>Error loading resources</p>;
+  if (error)
+    return (
+      <EmptyState
+        msg="Error on load resources"
+        icon={<ServerOff size={20} />}
+      />
+    );
 
   const handleNavigate = (id: string, name: string) => {
     // Clear selection when navigating into a folder
