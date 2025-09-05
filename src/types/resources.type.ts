@@ -10,4 +10,5 @@ export type Resource = {
   path: string;
   type: "folder" | "file";
   updated_at: string;
+  status?: "notIndexed" | "indexing" | "indexed";
 };

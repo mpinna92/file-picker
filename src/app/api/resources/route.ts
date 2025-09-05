@@ -51,6 +51,7 @@ export async function GET(request: Request) {
       path: r.inode_path?.path,
       type: r.inode_type === "directory" ? "folder" : "file",
       updated_at: r.updated_at || new Date().toISOString(),
+      status: "notIndexed",
     }));
 
     return NextResponse.json({ success: true, resources });

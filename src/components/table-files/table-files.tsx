@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useResources } from "@/hooks/useResources";
 import { TableHeader } from "./table-header";
 import { TableRow } from "./table-row";
@@ -8,6 +8,7 @@ import { useConnection } from "@/hooks/useConnection";
 import { SkTableFiles } from "./skeletons/sk-table-files";
 import { Resource } from "@/types/resources.type";
 import { Breadcrumbs } from "./breadcrumbs";
+import { useKBStore } from "@/stores/kb.store";
 
 export function TableFiles() {
   const { connection, loading: connLoading } = useConnection();
@@ -21,6 +22,12 @@ export function TableFiles() {
     connection?.connection_id ?? "",
     currentFolderId,
   );
+
+  const resetOnNavigation = useKBStore((state) => state.resetOnNavigation);
+
+  useEffect(() => {
+    resetOnNavigation(resources);
+  }, [resources, resetOnNavigation]);
 
   if (connLoading || loading) return <SkTableFiles />;
   if (error) return <p>Error loading resources</p>;
@@ -42,7 +49,7 @@ export function TableFiles() {
         onItemClick={handleBreadcrumbClick}
       />
 
-      {/* Table  */}
+      {/* Table */}
       <TableHeader />
 
       {resources.map((res: Resource) => (
