@@ -7,12 +7,14 @@ import { useSelectedResourcesStore } from "@/stores/selectedResources.store";
 export function SelectAll() {
   const selectedIds = useSelectedResourcesStore((s) => s.selectedIds);
   const toggle = useSelectedResourcesStore((s) => s.toggle);
-  const clear = useSelectedResourcesStore((s) => s.clear);
 
   const resources = useFetchedResourcesStore((s) => s.resources);
-  const visibleIds = resources.map((r) => r.resource_id);
 
-  const count = selectedIds.length;
+  // Just notIndexed resources
+  const selectableResources = resources.filter((r) => r.status !== "indexed");
+  const visibleIds = selectableResources.map((r) => r.resource_id);
+
+  const count = selectedIds.filter((id) => visibleIds.includes(id)).length;
 
   const allVisibleSelected =
     visibleIds.length > 0 && visibleIds.every((id) => selectedIds.includes(id));
@@ -21,7 +23,10 @@ export function SelectAll() {
     if (visibleIds.length === 0) return;
 
     if (allVisibleSelected) {
-      clear();
+      // Just clean visiblesIds
+      visibleIds.forEach((id) => {
+        if (selectedIds.includes(id)) toggle(id);
+      });
     } else {
       visibleIds.forEach((id) => {
         if (!selectedIds.includes(id)) toggle(id);
