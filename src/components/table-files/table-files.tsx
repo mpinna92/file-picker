@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useResources } from "@/hooks/useResources";
 import { TableHeader } from "./table-header";
 import { TableRow } from "./table-row";
@@ -8,7 +8,6 @@ import { useConnection } from "@/hooks/useConnection";
 import { SkTableFiles } from "./skeletons/sk-table-files";
 import { Resource } from "@/types/resources.type";
 import { Breadcrumbs } from "./breadcrumbs";
-import { useIndexedIds } from "@/hooks/useIndexedIds";
 import { useKBStore } from "@/stores/kb.store";
 
 export function TableFiles() {
@@ -18,26 +17,11 @@ export function TableFiles() {
   >([]);
 
   const currentFolderId = folderStack.at(-1)?.id;
-  const currentKBId = "YOUR_KB_ID"; // TODO: replace with the actual KB id
 
   const { resources, loading, error } = useResources(
     connection?.connection_id ?? "",
     currentFolderId,
   );
-
-  // merge with indexed states from KB (if any)
-  const { indexedMap } = useIndexedIds(currentKBId);
-  const mergedResources: Resource[] = resources.map((r) => ({
-    ...r,
-    status: indexedMap[r.resource_id] ?? r.status,
-  }));
-
-  // Sync visible ids into the store on every folder/data change
-  const setVisibleResourceIds = useKBStore((s) => s.setVisibleResourceIds);
-  useEffect(() => {
-    const ids = mergedResources.map((r) => r.resource_id);
-    setVisibleResourceIds(ids);
-  }, [mergedResources, setVisibleResourceIds]);
 
   const resetOnNavigation = useKBStore((s) => s.resetOnNavigation);
 
@@ -69,7 +53,7 @@ export function TableFiles() {
 
       <TableHeader />
 
-      {mergedResources.map((res: Resource) => (
+      {resources.map((res: Resource) => (
         <TableRow
           key={res.resource_id}
           resource={res}
