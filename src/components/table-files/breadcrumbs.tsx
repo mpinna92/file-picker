@@ -1,5 +1,7 @@
 "use client";
 
+import { useSelectedResourcesStore } from "@/stores/selectedResources.store";
+
 type BreadcrumbItem = { id: string; name: string };
 
 interface BreadcrumbsProps {
@@ -13,11 +15,23 @@ export function Breadcrumbs({
   onRootClick,
   onItemClick,
 }: BreadcrumbsProps) {
+  const clearSelection = useSelectedResourcesStore((s) => s.clear);
+
+  const handleRootClick = () => {
+    clearSelection();
+    onRootClick();
+  };
+
+  const handleItemClick = (index: number) => {
+    clearSelection();
+    onItemClick(index);
+  };
+
   return (
     <div className="flex h-10 items-center gap-3 border-b border-gray-200 bg-gray-50 px-6 py-2 text-sm">
       <button
         type="button"
-        onClick={onRootClick}
+        onClick={handleRootClick}
         className="cursor-pointer font-medium text-gray-600 transition-opacity hover:opacity-75"
       >
         Root
@@ -28,7 +42,7 @@ export function Breadcrumbs({
           <span className="text-gray-300">/</span>
           <button
             type="button"
-            onClick={() => onItemClick(idx)}
+            onClick={() => handleItemClick(idx)}
             className="cursor-pointer font-medium text-gray-600 transition-opacity hover:opacity-75"
           >
             {folder.name}

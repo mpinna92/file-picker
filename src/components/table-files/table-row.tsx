@@ -5,7 +5,7 @@ import { Checkbox } from "../ui/checkbox";
 import { IndexBadgeStatus } from "./index-badge-status";
 import { TypeItem } from "./type-item";
 import { formatDate } from "@/utils/date-formatter";
-import { useKBStore } from "@/stores/kb.store";
+import { useSelectedResourcesStore } from "@/stores/selectedResources.store";
 
 interface TableRowProps {
   resource: Resource;
@@ -13,10 +13,10 @@ interface TableRowProps {
 }
 
 export function TableRow({ resource, onFolderClick }: TableRowProps) {
-  const checked = useKBStore((state) =>
-    state.selectedResourceIds.includes(resource.resource_id),
+  const checked = useSelectedResourcesStore((s) =>
+    s.isSelected(resource.resource_id),
   );
-  const toggleResource = useKBStore((state) => state.toggleResource);
+  const toggle = useSelectedResourcesStore((s) => s.toggle);
 
   // Disable checkbox if resource is already in KB
   const isDisabled =
@@ -28,7 +28,7 @@ export function TableRow({ resource, onFolderClick }: TableRowProps) {
       <div className="flex h-full flex-none items-center justify-center px-6">
         <Checkbox
           checked={checked}
-          onCheckedChange={() => toggleResource(resource.resource_id)}
+          onCheckedChange={() => toggle(resource.resource_id)}
           disabled={isDisabled}
         />
       </div>

@@ -2,12 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import { ListPlus } from "lucide-react";
-import { useKBStore } from "@/stores/kb.store";
+import { useSelectedResourcesStore } from "@/stores/selectedResources.store";
 import { useConnection } from "@/hooks/useConnection";
 
 export function AddToKBase() {
-  const selected = useKBStore((state) => state.selectedResourceIds);
-  const clearSelection = useKBStore((state) => state.clearSelection);
+  const selected = useSelectedResourcesStore((s) => s.selectedIds);
+  const clearSelection = useSelectedResourcesStore((s) => s.clear);
 
   const { connection } = useConnection();
 
