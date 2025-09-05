@@ -2,13 +2,19 @@
 
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
+import { useFetchedResourcesStore } from "@/stores/fetchedResources.store";
 
 export function SearchFilter() {
+  const searchQuery = useFetchedResourcesStore((s) => s.searchQuery);
+  const setSearchQuery = useFetchedResourcesStore((s) => s.setSearchQuery);
+
   return (
     <div className="relative w-auto">
       <Input
         type="text"
-        placeholder="Search"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        placeholder="Search by path"
         className="w-max-80 peer block w-full rounded-md border py-2 pl-8 text-sm"
       />
       <Search

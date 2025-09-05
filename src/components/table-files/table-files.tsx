@@ -10,7 +10,7 @@ import { Resource } from "@/types/resources.type";
 import { Breadcrumbs } from "./breadcrumbs";
 import { useKBStore } from "@/stores/kb.store";
 import { EmptyState } from "../empty-state/empty-state";
-import { ServerOff } from "lucide-react";
+import { Frown, ServerOff } from "lucide-react";
 import { useFetchedResourcesStore } from "@/stores/fetchedResources.store";
 
 export function TableFiles() {
@@ -20,7 +20,7 @@ export function TableFiles() {
   >([]);
   const currentFolderId = folderStack.at(-1)?.id;
 
-  // Main Resources Hook
+  // Fetch and feed the store (setFromApi)
   const { isLoading, isError: resError } = useResources(
     connection?.connection_id ?? "",
     currentFolderId,
@@ -28,8 +28,8 @@ export function TableFiles() {
 
   const resetOnNavigation = useKBStore((s) => s.resetOnNavigation);
 
-  // Read only from store
-  const fetchedResources = useFetchedResourcesStore((s) => s.resources);
+  // Render the derived list (sorted + searched)
+  const visibleResources = useFetchedResourcesStore((s) => s.visibleResources);
 
   if (connLoading || isLoading) return <SkTableFiles />;
   if (resError)
@@ -51,25 +51,31 @@ export function TableFiles() {
   };
 
   return (
-    <div className="flex w-[64rem] flex-none flex-col border border-gray-200 lg:w-full">
-      <Breadcrumbs
-        items={folderStack}
-        onRootClick={() => {
-          resetOnNavigation();
-          setFolderStack([]);
-        }}
-        onItemClick={handleBreadcrumbClick}
-      />
+    <>
+      {!visibleResources.length && (
+        <EmptyState msg="Nothing was found." icon={<Frown size={20} />} />
+      )}
 
-      <TableHeader />
-
-      {fetchedResources.map((res: Resource) => (
-        <TableRow
-          key={res.resource_id}
-          resource={res}
-          onFolderClick={(id) => handleNavigate(id, res.path)}
+      <div className="flex w-[64rem] flex-none flex-col border border-gray-200 lg:w-full">
+        <Breadcrumbs
+          items={folderStack}
+          onRootClick={() => {
+            resetOnNavigation();
+            setFolderStack([]);
+          }}
+          onItemClick={handleBreadcrumbClick}
         />
-      ))}
-    </div>
+
+        <TableHeader />
+
+        {visibleResources.map((res: Resource) => (
+          <TableRow
+            key={res.resource_id}
+            resource={res}
+            onFolderClick={(id) => handleNavigate(id, res.path)}
+          />
+        ))}
+      </div>
+    </>
   );
 }

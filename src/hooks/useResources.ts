@@ -17,9 +17,7 @@ export function useResources(connectionId?: string, folderId?: string) {
   const { RESOURCES_INTERNAL } = API_URLS_INTERNAL;
   const setFromApi = useFetchedResourcesStore((s) => s.setFromApi);
 
-  const shouldFetch = !!connectionId;
-
-  const url = shouldFetch
+  const url = connectionId
     ? `${RESOURCES_INTERNAL}?connection_id=${connectionId}${
         folderId ? `&resource_id=${folderId}` : ""
       }`
@@ -33,7 +31,7 @@ export function useResources(connectionId?: string, folderId?: string) {
   useEffect(() => {
     if (!data?.resources) return;
 
-    // Avoid re-sets on IDs comparations
+    /*  Only set when the list truly changes (avoid loops) */
     const current = useFetchedResourcesStore.getState().resources;
     const currentIds = current.map((r) => r.resource_id).join(",");
     const nextIds = data.resources.map((r) => r.resource_id).join(",");
