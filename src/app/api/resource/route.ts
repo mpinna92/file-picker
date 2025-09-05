@@ -17,7 +17,7 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const connectionId = searchParams.get("connection_id");
-    const resourceIds = searchParams.get("resource_ids"); // uno o varios, separados por comas
+    const resourceIds = searchParams.get("resource_ids");
 
     if (!connectionId || !resourceIds) {
       return NextResponse.json(

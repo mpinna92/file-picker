@@ -2,8 +2,11 @@
 
 import { useSelectedResourcesStore } from "@/stores/selectedResources.store";
 import { useFetchedResourcesStore } from "@/stores/fetchedResources.store";
+import { API_URLS_INTERNAL } from "@/statics";
 
 export function useKnowledgeBase() {
+  const { KBS_INTERNAL } = API_URLS_INTERNAL;
+
   const selectedIds = useSelectedResourcesStore((s) => s.selectedIds);
   const clearSelection = useSelectedResourcesStore((s) => s.clear);
   const allResources = useFetchedResourcesStore((s) => s.resources);
@@ -39,7 +42,7 @@ export function useKnowledgeBase() {
       cron_job_id: null,
     };
 
-    const res = await fetch("/api/knowledge-bases", {
+    const res = await fetch(`${KBS_INTERNAL}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
