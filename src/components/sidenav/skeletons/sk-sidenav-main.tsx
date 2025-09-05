@@ -18,10 +18,6 @@ export function SkSidenav() {
           <Skeleton className="h-12 w-full" />
         </div>
       </div>
-
-      <div className="mt-auto flex h-15 w-full flex-none items-center justify-between gap-2 border-t border-gray-200 p-2">
-        <Skeleton className="h-10 w-full" />
-      </div>
     </nav>
   );
 }
