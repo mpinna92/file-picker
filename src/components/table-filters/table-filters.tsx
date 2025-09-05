@@ -5,11 +5,17 @@ import { FilterButton } from "./filter-button";
 import { SearchFilter } from "./search-filter";
 import { SelectAll } from "./select-all";
 import { SortButton } from "./sort-button";
+import { SkTableFilters } from "./skeletons/sk-table-filters";
+import { useFetchedResourcesStore } from "@/stores/fetchedResources.store";
 
 export function TableFilters() {
   const totalFiles = useIntegrationStore(
     (state) => state.integration.totalFiles,
   );
+
+  const fetchedResources = useFetchedResourcesStore((s) => s.resources);
+
+  if (!fetchedResources.length) return <SkTableFilters />;
 
   return (
     <div
