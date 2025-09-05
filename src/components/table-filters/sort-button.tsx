@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { ListOrdered } from "lucide-react";
 import {
   DropdownMenu,
@@ -11,9 +10,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useFetchedResourcesStore } from "@/stores/fetchedResources.store";
 
 export function SortButton() {
-  const [position, setPosition] = useState("az");
+  const sortOrder = useFetchedResourcesStore((s) => s.sortOrder);
+  const setSortOrder = useFetchedResourcesStore((s) => s.setSortOrder);
 
   return (
     <DropdownMenu>
@@ -27,7 +28,10 @@ export function SortButton() {
           Sort by
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+        <DropdownMenuRadioGroup
+          value={sortOrder}
+          onValueChange={(val) => setSortOrder(val as "az" | "za")}
+        >
           <DropdownMenuRadioItem
             value="az"
             className="text-sm text-[0.75rem] font-medium text-gray-600"

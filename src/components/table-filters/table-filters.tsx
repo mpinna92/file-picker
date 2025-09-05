@@ -1,7 +1,6 @@
 "use client";
 
 import useIntegrationStore from "@/stores/integration.store";
-import { FilterButton } from "./filter-button";
 import { SearchFilter } from "./search-filter";
 import { SelectAll } from "./select-all";
 import { SortButton } from "./sort-button";
@@ -28,7 +27,6 @@ export function TableFilters() {
       <div className="ml-auto flex gap-10">
         <div className="flex gap-8">
           <SortButton />
-          <FilterButton />
         </div>
         <SearchFilter />
       </div>
