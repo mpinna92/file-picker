@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useResources } from "@/hooks/useResources";
 import { TableHeader } from "./table-header";
 import { TableRow } from "./table-row";
@@ -20,29 +20,16 @@ export function TableFiles() {
   >([]);
   const currentFolderId = folderStack.at(-1)?.id;
 
-  const {
-    resources,
-    isLoading,
-    isError: resError,
-  } = useResources(connection?.connection_id ?? "", currentFolderId);
+  // Main Resources Hook
+  const { isLoading, isError: resError } = useResources(
+    connection?.connection_id ?? "",
+    currentFolderId,
+  );
 
   const resetOnNavigation = useKBStore((s) => s.resetOnNavigation);
 
-  // ✅ Usamos selectors de Zustand
+  // Read only from store
   const fetchedResources = useFetchedResourcesStore((s) => s.resources);
-  const setFromApi = useFetchedResourcesStore((s) => s.setFromApi);
-
-  // ✅ Sync con el store solo si cambian los IDs
-  useEffect(() => {
-    if (resources) {
-      const current = useFetchedResourcesStore.getState().resources;
-      const currentIds = current.map((r) => r.resource_id).join(",");
-      const nextIds = resources.map((r) => r.resource_id).join(",");
-      if (currentIds !== nextIds) {
-        setFromApi(resources); // 👈 mergea en vez de sobrescribir
-      }
-    }
-  }, [resources, setFromApi]);
 
   if (connLoading || isLoading) return <SkTableFiles />;
   if (resError)

@@ -31,8 +31,15 @@ export function useResources(connectionId?: string, folderId?: string) {
   );
 
   useEffect(() => {
-    if (data?.resources) {
-      setFromApi(data.resources); // 👈 usamos la función nueva
+    if (!data?.resources) return;
+
+    // Avoid re-sets on IDs comparations
+    const current = useFetchedResourcesStore.getState().resources;
+    const currentIds = current.map((r) => r.resource_id).join(",");
+    const nextIds = data.resources.map((r) => r.resource_id).join(",");
+
+    if (currentIds !== nextIds) {
+      setFromApi(data.resources);
     }
   }, [data, setFromApi]);
 
