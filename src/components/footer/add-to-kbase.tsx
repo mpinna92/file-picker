@@ -2,30 +2,42 @@
 
 import { Button } from "@/components/ui/button";
 import { ListPlus } from "lucide-react";
-import { useSelectedResourcesStore } from "@/stores/selectedResources.store";
+import { useKnowledgeBase } from "@/hooks/useKnowledgeBase";
 import { useConnection } from "@/hooks/useConnection";
 
 export function AddToKBase() {
-  const selected = useSelectedResourcesStore((s) => s.selectedIds);
-  const clearSelection = useSelectedResourcesStore((s) => s.clear);
-
   const { connection } = useConnection();
+  const { selectedResources, createKnowledgeBase } = useKnowledgeBase();
 
-  const count = selected.length;
+  const count = selectedResources.length;
   const disabled = count === 0 || !connection;
+
+  const handleAdd = async () => {
+    if (!connection) return;
+    try {
+      const kb = await createKnowledgeBase(
+        connection.connection_id,
+        "Test Knowledge Base",
+        "This is a test knowledge base",
+      );
+      console.log("✅ KB creada:", kb);
+    } catch (err) {
+      console.error("❌ Error creando KB:", err);
+    }
+  };
 
   return (
     <div className="flex h-full w-full items-center justify-center gap-3 lg:w-auto lg:justify-end">
-      <Button
-        variant="outline"
-        className="cursor-pointer"
-        disabled={disabled}
-        onClick={clearSelection}
-      >
+      <Button variant="outline" className="cursor-pointer" disabled={disabled}>
         Cancel
       </Button>
 
-      <Button variant="default" className="cursor-pointer" disabled={disabled}>
+      <Button
+        variant="default"
+        className="cursor-pointer"
+        disabled={disabled}
+        onClick={handleAdd}
+      >
         <ListPlus /> Add to knowledge base ({count})
       </Button>
     </div>
