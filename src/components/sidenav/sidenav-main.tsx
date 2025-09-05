@@ -4,7 +4,6 @@ import { SidenavButton } from "./sidenav-button";
 import { SidenavBrand } from "./sidenav-brand";
 import useIntegrationStore from "@/stores/integration.store";
 import { Integration } from "@/types/integration.type";
-import { KBase } from "../knowledgebase/kbase-main";
 import { useResourceStore } from "@/stores/resource.store";
 
 export function Sidenav() {
@@ -38,8 +37,6 @@ export function Sidenav() {
           ))}
         </div>
       </div>
-
-      <KBase />
     </nav>
   );
 }
