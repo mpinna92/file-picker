@@ -5,12 +5,15 @@ import { ListPlus } from "lucide-react";
 import { useKnowledgeBase } from "@/hooks/useKnowledgeBase";
 import { useConnection } from "@/hooks/useConnection";
 import { useSelectedResourcesStore } from "@/stores/selectedResources.store";
+import { useFetchedResourcesStore } from "@/stores/fetchedResources.store";
 import { useState } from "react";
 
 export function AddToKBase() {
   const { connection } = useConnection();
   const { selectedResources, createKnowledgeBase } = useKnowledgeBase();
   const clear = useSelectedResourcesStore((s) => s.clear);
+  const markAsIndexed = useFetchedResourcesStore((s) => s.markAsIndexed);
+
   const [loading, setLoading] = useState(false);
 
   const count = selectedResources.length;
@@ -26,7 +29,12 @@ export function AddToKBase() {
         "This is a test knowledge base",
       );
       console.log("✅ KB created:", kb);
-      clear(); // opcional: limpiar selección tras crear
+
+      // ✅ marcar como indexados en el store
+      const ids = selectedResources.map((r) => r.resource_id);
+      markAsIndexed(ids);
+
+      clear(); // limpiar selección tras agregar
     } catch (err) {
       console.error("❌ Error creating KB:", err);
     } finally {

@@ -28,6 +28,7 @@ export function TableRow({ resource, onFolderClick }: TableRowProps) {
       <div className="flex h-full flex-none items-center justify-center px-6">
         <Checkbox
           checked={checked}
+          className="disabled:opacity-20"
           onCheckedChange={() => toggle(resource.resource_id)}
           disabled={isDisabled}
         />

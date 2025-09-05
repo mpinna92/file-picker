@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useResources } from "@/hooks/useResources";
 import { TableHeader } from "./table-header";
 import { TableRow } from "./table-row";
@@ -11,13 +11,13 @@ import { Breadcrumbs } from "./breadcrumbs";
 import { useKBStore } from "@/stores/kb.store";
 import { EmptyState } from "../empty-state/empty-state";
 import { ServerOff } from "lucide-react";
+import { useFetchedResourcesStore } from "@/stores/fetchedResources.store";
 
 export function TableFiles() {
   const { connection, loading: connLoading } = useConnection();
   const [folderStack, setFolderStack] = useState<
     { id: string; name: string }[]
   >([]);
-
   const currentFolderId = folderStack.at(-1)?.id;
 
   const {
@@ -27,6 +27,22 @@ export function TableFiles() {
   } = useResources(connection?.connection_id ?? "", currentFolderId);
 
   const resetOnNavigation = useKBStore((s) => s.resetOnNavigation);
+
+  // ✅ Usamos selectors de Zustand
+  const fetchedResources = useFetchedResourcesStore((s) => s.resources);
+  const setFromApi = useFetchedResourcesStore((s) => s.setFromApi);
+
+  // ✅ Sync con el store solo si cambian los IDs
+  useEffect(() => {
+    if (resources) {
+      const current = useFetchedResourcesStore.getState().resources;
+      const currentIds = current.map((r) => r.resource_id).join(",");
+      const nextIds = resources.map((r) => r.resource_id).join(",");
+      if (currentIds !== nextIds) {
+        setFromApi(resources); // 👈 mergea en vez de sobrescribir
+      }
+    }
+  }, [resources, setFromApi]);
 
   if (connLoading || isLoading) return <SkTableFiles />;
   if (resError)
@@ -38,13 +54,11 @@ export function TableFiles() {
     );
 
   const handleNavigate = (id: string, name: string) => {
-    // Clear selection when navigating into a folder
     resetOnNavigation();
     setFolderStack((prev) => [...prev, { id, name }]);
   };
 
   const handleBreadcrumbClick = (index: number) => {
-    // Clear selection when navigating via breadcrumbs
     resetOnNavigation();
     setFolderStack((prev) => prev.slice(0, index + 1));
   };
@@ -62,7 +76,7 @@ export function TableFiles() {
 
       <TableHeader />
 
-      {resources.map((res: Resource) => (
+      {fetchedResources.map((res: Resource) => (
         <TableRow
           key={res.resource_id}
           resource={res}

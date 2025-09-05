@@ -15,7 +15,7 @@ type ResourcesResponse = {
 
 export function useResources(connectionId?: string, folderId?: string) {
   const { RESOURCES_INTERNAL } = API_URLS_INTERNAL;
-  const setResources = useFetchedResourcesStore((s) => s.setResources);
+  const setFromApi = useFetchedResourcesStore((s) => s.setFromApi);
 
   const shouldFetch = !!connectionId;
 
@@ -32,9 +32,9 @@ export function useResources(connectionId?: string, folderId?: string) {
 
   useEffect(() => {
     if (data?.resources) {
-      setResources(data.resources);
+      setFromApi(data.resources); // 👈 usamos la función nueva
     }
-  }, [data, setResources]);
+  }, [data, setFromApi]);
 
   return {
     resources: data?.resources || [],
