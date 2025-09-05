@@ -20,15 +20,16 @@ export function TableFiles() {
 
   const currentFolderId = folderStack.at(-1)?.id;
 
-  const { resources, loading, error } = useResources(
-    connection?.connection_id ?? "",
-    currentFolderId,
-  );
+  const {
+    resources,
+    isLoading,
+    isError: resError,
+  } = useResources(connection?.connection_id ?? "", currentFolderId);
 
   const resetOnNavigation = useKBStore((s) => s.resetOnNavigation);
 
-  if (connLoading || loading) return <SkTableFiles />;
-  if (error)
+  if (connLoading || isLoading) return <SkTableFiles />;
+  if (resError)
     return (
       <EmptyState
         msg="Error on load resources"
