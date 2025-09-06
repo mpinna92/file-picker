@@ -23,7 +23,7 @@ export function SidenavButton({
     >
       <div className="flex max-w-9/10 cursor-pointer items-center gap-3">
         <Image
-          className="h-auto w-full max-w-5 flex-none object-contain"
+          className="h-auto w-full max-w-4.5 flex-none object-contain lg:max-w-5"
           src={icon ?? "/assets/icon_files.svg"}
           width={1}
           height={1}

@@ -22,7 +22,7 @@ export function Header() {
         />
         <div className="flex flex-col gap-0">
           <div className="flex items-center gap-2">
-            <span className="text-md flex gap-1 font-medium text-gray-900">
+            <span className="text-md flex gap-1 font-medium text-nowrap text-gray-900">
               {name}
             </span>
             {isBeta && (
@@ -32,12 +32,14 @@ export function Header() {
             )}
           </div>
           {relEmail && (
-            <span className="text-xs text-gray-500">{relEmail}</span>
+            <span className="text-xs text-nowrap text-gray-500">
+              {relEmail}
+            </span>
           )}
         </div>
       </div>
 
-      <Button variant="outline" disabled>
+      <Button variant="outline" disabled className="hidden lg:block">
         <Plus /> Add account
       </Button>
     </div>

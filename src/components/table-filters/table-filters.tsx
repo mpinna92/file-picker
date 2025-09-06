@@ -24,7 +24,7 @@ export function TableFilters() {
         <SelectAll />
       </div>
 
-      <div className="ml-auto flex gap-10">
+      <div className="ml-auto flex gap-4 lg:gap-10">
         <div className="flex gap-8">
           <SortButton />
         </div>

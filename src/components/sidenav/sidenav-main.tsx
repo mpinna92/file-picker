@@ -17,7 +17,7 @@ export function Sidenav() {
   const resources = useFetchedResourcesStore((s) => s.resources);
 
   return (
-    <nav className="flex h-dvh w-25 flex-col border-r border-gray-200 bg-gray-100 lg:w-60">
+    <nav className="flex h-dvh w-22 flex-col border-r border-gray-200 bg-gray-100 lg:w-60">
       <SidenavBrand />
 
       <div className="w-full overflow-y-auto">

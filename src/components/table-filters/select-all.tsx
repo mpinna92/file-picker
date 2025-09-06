@@ -45,7 +45,7 @@ export function SelectAll() {
         />
         <label
           htmlFor="selectAllCheck"
-          className="text-sm text-gray-700 select-none"
+          className="text-sm text-nowrap text-gray-700 select-none"
         >
           Select all
         </label>
