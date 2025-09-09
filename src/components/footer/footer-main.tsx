@@ -15,7 +15,7 @@ export function Footer() {
     >
       <div className="pointer-events-none hidden items-center gap-2 rounded-sm bg-gray-200 px-3 py-1 lg:flex">
         <Info size={14} className="text-gray-500" />
-        <span className="text-xs font-semibold text-gray-600">
+        <span className="text-xs font-medium text-gray-600">
           We recommended selecting as few items as needed
         </span>
       </div>

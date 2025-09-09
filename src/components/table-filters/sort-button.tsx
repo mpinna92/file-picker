@@ -19,8 +19,8 @@ export function SortButton() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="cursor-pointer">
-        <span className="flex items-center gap-1 text-right text-xs font-semibold text-gray-500 transition-colors hover:text-gray-700">
-          <ListOrdered size={12} className="relative top-0.5" /> Sort
+        <span className="flex items-center gap-1 text-right text-xs font-medium text-gray-500 transition-colors hover:text-gray-700">
+          <ListOrdered size={12} className="top-0.2 relative" /> Sort
         </span>
       </DropdownMenuTrigger>
       <DropdownMenuContent>

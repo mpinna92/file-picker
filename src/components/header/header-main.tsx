@@ -26,7 +26,7 @@ export function Header() {
               {name}
             </span>
             {isBeta && (
-              <div className="text-gray-70 text-10 flex h-4 items-center justify-center gap-1 rounded-sm bg-violet-100 px-2 text-center text-[0.5rem] font-bold">
+              <div className="text-gray-70 text-10 flex h-4 items-center justify-center gap-1 rounded-sm bg-violet-100 px-2 text-center text-[0.5rem] font-medium text-violet-950">
                 BETA
               </div>
             )}
@@ -39,7 +39,7 @@ export function Header() {
         </div>
       </div>
 
-      <Button variant="outline" disabled className="hidden lg:block">
+      <Button variant="outline" disabled className="hidden lg:flex">
         <Plus /> Add account
       </Button>
     </div>

@@ -57,7 +57,7 @@ export function TableRow({ resource, onFolderClick }: TableRowProps) {
 
       {/* Index status */}
       <div className="flex h-full w-40 flex-none items-center px-3">
-        <span className="color-700 text-sm font-semibold">
+        <span className="color-700 text-sm font-medium">
           <IndexBadgeStatus status={resource.status} />
         </span>
       </div>

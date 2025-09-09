@@ -51,7 +51,7 @@ export function SelectAll() {
         </label>
       </div>
 
-      <span className="relative bottom-[0.04rem] text-right text-xs text-gray-500">
+      <span className="relative text-right text-xs text-gray-500">
         ({count})
       </span>
     </div>
