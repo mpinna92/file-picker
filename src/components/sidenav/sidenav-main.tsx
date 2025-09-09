@@ -4,7 +4,6 @@ import { SidenavButton } from "./sidenav-button";
 import { SidenavBrand } from "./sidenav-brand";
 import useIntegrationStore from "@/stores/integration.store";
 import { Integration } from "@/types/integration.type";
-import { useResourceStore } from "@/stores/resource.store";
 import { useFetchedResourcesStore } from "@/stores/fetchedResources.store";
 
 export function Sidenav() {
