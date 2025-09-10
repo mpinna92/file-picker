@@ -30,11 +30,11 @@ export function AddToKBase() {
       );
       console.log("✅ KB created:", kb);
 
-      // ✅ marcar como indexados en el store
+      // ✅ Mark as indexed on the store
       const ids = selectedResources.map((r) => r.resource_id);
       markAsIndexed(ids);
 
-      clear(); // limpiar selección tras agregar
+      clear(); // Clear selection after add
     } catch (err) {
       console.error("❌ Error creating KB:", err);
     } finally {

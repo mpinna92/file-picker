@@ -8,10 +8,10 @@ import { useConnection } from "@/hooks/useConnection";
 import { SkTableFiles } from "./skeletons/sk-table-files";
 import { Resource } from "@/types/resources.type";
 import { Breadcrumbs } from "./breadcrumbs";
-import { useKBStore } from "@/stores/kb.store";
 import { EmptyState } from "../empty-state/empty-state";
 import { Frown, ServerOff } from "lucide-react";
 import { useFetchedResourcesStore } from "@/stores/fetchedResources.store";
+import { useSelectedResourcesStore } from "@/stores/selectedResources.store";
 
 export function TableFiles() {
   const { connection, loading: connLoading } = useConnection();
@@ -26,7 +26,7 @@ export function TableFiles() {
     currentFolderId,
   );
 
-  const resetOnNavigation = useKBStore((s) => s.resetOnNavigation);
+  const resetOnNavigation = useSelectedResourcesStore((s) => s.clear);
 
   // Render the derived list (sorted + searched)
   const visibleResources = useFetchedResourcesStore((s) => s.visibleResources);
