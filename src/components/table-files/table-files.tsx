@@ -26,8 +26,6 @@ export function TableFiles() {
     currentFolderId,
   );
 
-  console.log(connection);
-
   const resetOnNavigation = useKBStore((s) => s.resetOnNavigation);
 
   // Render the derived list (sorted + searched)

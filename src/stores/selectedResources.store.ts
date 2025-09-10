@@ -26,7 +26,7 @@ export const useSelectedResourcesStore = create<SelectedResourcesStore>(
 
     addMany: (ids) =>
       set((state) => {
-        const merged = Array.from(new Set([...state.selectedIds, ...ids]));
+        const merged = [...state.selectedIds, ...ids];
         return { selectedIds: merged };
       }),
 
