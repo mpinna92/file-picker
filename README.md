@@ -23,6 +23,7 @@ See online 🔗[here](https://file-picker-mpinna.vercel.app/)
 ## 🧰 Tech Stack
 
 🧙‍♂️ Next.js (App Router) + React
+
 🟦 TypeScript
 
 🔁 SWR (data fetching & mutations)
