@@ -1,7 +1,6 @@
 "use client";
 
 import { useSelectedResourcesStore } from "@/stores/selectedResources.store";
-import { useFetchedResourcesStore } from "@/stores/fetchedResources.store";
 import { API_URLS_INTERNAL } from "@/statics";
 
 export function useKnowledgeBase() {
@@ -9,11 +8,6 @@ export function useKnowledgeBase() {
 
   const selectedIds = useSelectedResourcesStore((s) => s.selectedIds);
   const clearSelection = useSelectedResourcesStore((s) => s.clear);
-  const allResources = useFetchedResourcesStore((s) => s.resources);
-
-  const selectedResources = allResources.filter((r) =>
-    selectedIds.includes(r.resource_id),
-  );
 
   const createKnowledgeBase = async (
     connectionId: string,
@@ -59,8 +53,6 @@ export function useKnowledgeBase() {
 
   return {
     selectedIds,
-    selectedResources,
-    clearSelection,
     createKnowledgeBase,
   };
 }

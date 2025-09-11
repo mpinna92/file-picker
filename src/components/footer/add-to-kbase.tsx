@@ -10,9 +10,11 @@ import { useState } from "react";
 
 export function AddToKBase() {
   const { connection } = useConnection();
-  const { selectedResources, createKnowledgeBase } = useKnowledgeBase();
-  const clear = useSelectedResourcesStore((s) => s.clear);
+  const { createKnowledgeBase } = useKnowledgeBase();
   const markAsIndexed = useFetchedResourcesStore((s) => s.markAsIndexed);
+
+  const clear = useSelectedResourcesStore((s) => s.clear);
+  const selectedResources = useSelectedResourcesStore((s) => s.selectedIds);
 
   const [loading, setLoading] = useState(false);
 
@@ -31,7 +33,7 @@ export function AddToKBase() {
       console.log("✅ KB created:", kb);
 
       // ✅ Mark as indexed on the store
-      const ids = selectedResources.map((r) => r.resource_id);
+      const ids = selectedResources.map((r) => r);
       markAsIndexed(ids);
 
       clear(); // Clear selection after add

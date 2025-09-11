@@ -36,6 +36,7 @@ function sortByPath(arr: Resource[], order: SortOrder): Resource[] {
   return [...arr].sort((a, b) => {
     const A = (a.path || "").toLowerCase();
     const B = (b.path || "").toLowerCase();
+
     return A.localeCompare(B) * dir;
   });
 }
