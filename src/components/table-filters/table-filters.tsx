@@ -4,7 +4,6 @@ import useIntegrationStore from "@/stores/integration.store";
 import { SearchFilter } from "./search-filter";
 import { SelectAll } from "./select-all";
 import { SortButton } from "./sort-button";
-import { SkTableFilters } from "./skeletons/sk-table-filters";
 import { useFetchedResourcesStore } from "@/stores/fetchedResources.store";
 
 export function TableFilters() {
@@ -14,7 +13,7 @@ export function TableFilters() {
 
   const fetchedResources = useFetchedResourcesStore((s) => s.resources);
 
-  if (!fetchedResources.length) return <SkTableFilters />;
+  if (!fetchedResources.length) return <div></div>;
 
   return (
     <div
